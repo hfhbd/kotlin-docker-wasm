@@ -8,9 +8,9 @@ Kotlin `1.8.0-Beta` and Docker `4.15` support Wasm, but the support is experimen
 
 ## Building
 
-`./gradlew build`
-`docker buildx build --platform wasi/wasm32 -t hello-wasm-kotlin .`
+1. `./gradlew build`
+1. `docker buildx build --platform wasi/wasm32 -t hello-wasm-kotlin .`
 
 ## Running
 
-`docker run --runtime=io.containerd.wasmedge.v1 --platform=wasi/wasm32 hello-wasm-kotlin`
+1. `docker run --runtime=io.containerd.wasmedge.v1 --platform=wasi/wasm32 hello-wasm-kotlin`
