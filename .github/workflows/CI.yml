@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: gradle/wrapper-validation-action@v1
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: 11
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Generate Docker Image
+        run: docker buildx build --platform wasi/wasm32 -t hello-wasm-kotlin .
+      - name: Run Docker Image
+        run: docker run --runtime=io.containerd.wasmedge.v1 --platform=wasi/wasm32 hello-wasm-kotlin
