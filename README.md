@@ -2,6 +2,8 @@
 
 Kotlin `1.8.0-Beta` and Docker `4.15` support Wasm, but the support is experimental.
 
+This repo was a test, wasi support is not yet implemented: https://youtrack.jetbrains.com/issue/KT-36172/Support-WASI
+
 ## Requirements
 
 1. Install Docker Desktop 4.15
